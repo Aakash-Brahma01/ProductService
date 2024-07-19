@@ -1,6 +1,10 @@
 package com.freelance.productservice.controllers;
 
+import com.freelance.productservice.dtos.FakeStoreProductDto;
+import com.freelance.productservice.dtos.GenericProductDto;
 import com.freelance.productservice.models.Product;
+import com.freelance.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -9,12 +13,28 @@ import java.util.UUID;
 @RequestMapping("/products")
 public class ProductController {
 
+    //    @Autowired
+    // field injection
+    //private ProductService productService;
+
+    // setter injection
+//    @Autowired
+//    public void setProductService(ProductService productService) {
+//        this.productService = productService;
+//    }
+
+    private ProductService productService;
+
+    public ProductController(@Qualifier("fakeStoreProductServiceImpl") ProductService productService) {
+        this.productService = productService;
+    }
+
     @GetMapping
     public void getAllProducts() {}
 
     @GetMapping("{id}")
-    public String getProductById(@PathVariable("id") Long id) {
-        return "Product with id " + id + " found";
+    public GenericProductDto getProductById(@PathVariable("id") Long id) {
+        return productService.getProductById(id);
     }
 
     @DeleteMapping("{id}")
