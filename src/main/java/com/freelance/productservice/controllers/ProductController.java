@@ -30,7 +30,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public void getAllProducts() {}
+    public GenericProductDto[] getAllProducts() {
+        return productService.getAllProducts();
+    }
 
     @GetMapping("{id}")
     public GenericProductDto getProductById(@PathVariable("id") Long id) {
@@ -38,13 +40,17 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteProductById(Long id) {}
+    public void deleteProductById(@PathVariable("id") Long id) {
+
+    }
 
     @PostMapping
-    public String createProduct() {
-        return "product created "+ UUID.randomUUID();
+    public GenericProductDto createProduct(@RequestBody GenericProductDto product) {
+        return productService.createProduct(product);
     }
 
     @PutMapping("{id}")
-    public void updateProductById() {}
+    public void updateProductById(@PathVariable("id") Long id, @RequestBody GenericProductDto product) {
+        
+    }
 }
