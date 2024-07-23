@@ -41,8 +41,8 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteProductById(@PathVariable("id") Long id) {
-
+    public GenericProductDto deleteProductById(@PathVariable("id") Long id) {
+        return productService.deleteProductById(id);
     }
 
     @PostMapping
@@ -51,7 +51,7 @@ public class ProductController {
     }
 
     @PutMapping("{id}")
-    public void updateProductById(@PathVariable("id") Long id, @RequestBody GenericProductDto product) {
-
+    public GenericProductDto updateProductById(@PathVariable("id") Long id, @RequestBody GenericProductDto genericProductDto) {
+        return productService.updateProductById(id,genericProductDto);
     }
 }
