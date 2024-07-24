@@ -1,11 +1,12 @@
 package com.freelance.productservice.services;
 
 import com.freelance.productservice.dtos.GenericProductDto;
+import com.freelance.productservice.exceptions.NotFoundException;
 
 import java.util.List;
 
 public interface ProductService {
-    GenericProductDto getProductById(Long id);
+    GenericProductDto getProductById(Long id) throws NotFoundException;
 
     GenericProductDto createProduct(GenericProductDto product);
 
