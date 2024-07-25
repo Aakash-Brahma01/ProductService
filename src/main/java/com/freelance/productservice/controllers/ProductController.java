@@ -1,36 +1,20 @@
 package com.freelance.productservice.controllers;
 
-import com.freelance.productservice.dtos.ExceptionDto;
-import com.freelance.productservice.dtos.FakeStoreProductDto;
 import com.freelance.productservice.dtos.GenericProductDto;
 import com.freelance.productservice.exceptions.NotFoundException;
-import com.freelance.productservice.models.Product;
 import com.freelance.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
 
-    //    @Autowired
-    // field injection
-    //private ProductService productService;
-
-    // setter injection
-//    @Autowired
-//    public void setProductService(ProductService productService) {
-//        this.productService = productService;
-//    }
-
     private ProductService productService;
 
-    public ProductController(@Qualifier("fakeStoreProductServiceImpl") ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 

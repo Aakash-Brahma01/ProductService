@@ -1,4 +1,4 @@
-package com.freelance.productservice.dtos;
+package com.freelance.productservice.thirdpartyclients.productservice.fakestore;
 
 import lombok.Getter;
 import lombok.Setter;
