@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Primary
+//@Primary
 @Service("fakeStoreProductServiceImpl")
 public class FakeStoreProductService implements ProductService{
 
