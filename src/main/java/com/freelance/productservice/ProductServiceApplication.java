@@ -11,6 +11,7 @@ import com.freelance.productservice.models.Product;
 import com.freelance.productservice.repositories.CategoryRepository;
 import com.freelance.productservice.repositories.PriceRepository;
 import com.freelance.productservice.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -110,5 +111,8 @@ public class ProductServiceApplication implements CommandLineRunner {
 
         List<Product> p4=productRepository.doSomething("Phone","Rupee");
         System.out.println("Title size"+p4.size());
+
+        Optional<Category> category1=categoryRepository.findById(UUID.fromString("18c3452a-c6db-4b17-a021-98f1b86462b8"));
+        List<Product> products=category1.get().getProducts();
     }
 }
